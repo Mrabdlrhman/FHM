@@ -1,0 +1,36 @@
+<mat-card>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<!-- convert from temeplet driven to react driven which allow us to control the form -->
+
+<form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading">
+    <div class="example-container">
+
+        <mat-form-field>
+          <input type="text" matInput 
+          placeholder="Title"
+          formControlName="title"
+          >
+          <mat-error *ngIf="form.get('title').invalid">Please enter post title</mat-error>
+
+        </mat-form-field>
+
+       <div>
+          <button mat-stroked-button type="button" (click)="imagePicker.click()">Pick image</button>
+          <input type="file" hidden #imagePicker (change)="onImagePicked($event)">
+       </div>
+       <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+         <img [src]="imagePreview" [alt]="form.value.title">
+       </div>
+
+        <mat-form-field>
+          <textarea matInput 
+          placeholder="Content"
+          formControlName="content"
+          ></textarea>
+          <mat-error *ngIf="form.get('content').invalid">Please enter post content</mat-error>
+        </mat-form-field>
+    </div>
+    <button mat-raised-button color="accent" 
+    type="submit">Save Post</button>
+</form>
+</mat-card>

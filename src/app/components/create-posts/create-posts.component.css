@@ -1,0 +1,26 @@
+/* mat-card{
+  width: 50%;
+  margin: auto;
+  margin-top: 14px;
+} */
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+  button{
+    margin-top: 7px;
+  }
+  mat-spinner{
+    margin: auto;
+  }
+.image-preview{
+  height: 5rem;
+  margin: 1rem 0;
+}
+.image-preview img{
+  height: 100%
+}
